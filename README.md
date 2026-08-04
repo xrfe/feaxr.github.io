@@ -1,4 +1,4 @@
-# Feaxr LLC
+# [Feaxr LLC](https://feaxr.com)
 
 <p align="center">
   <strong>Applied AI for Scientific Computing and Digital Twins</strong><br>
