@@ -62,13 +62,13 @@ AINI serves as the foundation for many future AI-powered scientific and engineer
 
 **Privacy Scan** is a privacy-first Android app that helps users identify potential hidden cameras and suspicious optical sources using their phone's camera and on-device AI.
 
-🔍 Optical lens & reflection detection
-🌙 Potential infrared source detection
-🤖 ML Kit + LiteRT on-device analysis
-📷 Real-time CameraX processing
-🧠 Multi-signal confidence scoring
-🔐 No cloud processing or image uploads
-🎨 Minimalist Jetpack Compose UI
+- 🔍 Optical lens & reflection detection
+- 🌙 Potential infrared source detection
+- 🤖 ML Kit on-device AI analysis
+- 📷 Real-time CameraX processing
+- 🧠 Multi-signal confidence scoring
+- 🔐 No cloud processing or image uploads
+- 🎨 Minimalist Jetpack Compose UI
 
 ---
 
