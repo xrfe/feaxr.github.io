@@ -47,7 +47,7 @@ Key focuses include:
 
 ---
 
-## 🤖 [AINI](https://play.google.com/store/apps/details?id=com.feaxr.ni)
+## 🤖 [AINI](https://play.google.com/store/apps/details?id=com.feaxr.aini)
 
 ### Artificial Intelligence Nexus Interface
 
