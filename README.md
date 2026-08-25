@@ -47,7 +47,7 @@ Key focuses include:
 
 ---
 
-## 🤖 [AINI](https://play.google.com/store/apps/details?id=com.feaxr.aini)
+## 🤖 [AINI](https://play.google.com/store/apps/details?id=com.feaxr.ni)ai
 
 ### Artificial Intelligence Nexus Interface
 
@@ -56,6 +56,19 @@ AINI is Feaxr's intelligent AI platform designed to make advanced AI practical, 
 It provides a unified interface for interacting with modern AI models while emphasizing efficiency, local intelligence, and seamless user experiences.
 
 AINI serves as the foundation for many future AI-powered scientific and engineering applications developed by Feaxr.
+
+---
+## 📷 [Privacy Scan](https://play.google.com/store/apps/details?id=com.feaxr.camdetect): Camera Detector
+
+**Privacy Scan** is a privacy-first Android app that helps users identify potential hidden cameras and suspicious optical sources using their phone's camera and on-device AI.
+
+🔍 Optical lens & reflection detection
+🌙 Potential infrared source detection
+🤖 ML Kit + LiteRT on-device analysis
+📷 Real-time CameraX processing
+🧠 Multi-signal confidence scoring
+🔐 No cloud processing or image uploads
+🎨 Minimalist Jetpack Compose UI
 
 ---
 
