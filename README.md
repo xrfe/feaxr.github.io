@@ -29,7 +29,7 @@ Our long-term vision is to enable engineers to collaborate naturally with intell
 
 # What We Build
 
-## 🔋 [DrLiBat](https://play.google.com/store/apps/details?id=com.echoxy.drlibat)
+## 🔋 [DrLiBat](https://play.google.com/store/apps/details?id=com.echoxy.drlibat): Scientific Battery Lab
 
 ### AI-Powered Battery Diagnostics
 
@@ -47,7 +47,7 @@ Key focuses include:
 
 ---
 
-## 🤖 [AINI](https://play.google.com/store/apps/details?id=com.feaxr.aini)
+## 🤖 [AINI](https://play.google.com/store/apps/details?id=com.feaxr.aini): Your Private AI Entrance
 
 ### Artificial Intelligence Nexus Interface
 
