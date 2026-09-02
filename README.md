@@ -71,7 +71,20 @@ AINI serves as the foundation for many future AI-powered scientific and engineer
 - 🎨 Minimalist Jetpack Compose UI
 
 ---
+## 👁️ [DrLens](https://play.google.com/store/apps/details?id=com.feaxr.drlens): AI Vision Assistant
 
+**DrLens**  turns your Android camera into an intelligent visual assistant that can recognize text, translate languages, identify objects, scan QR codes and barcodes, and help you discover more about the world around you.
+
+- 🔤 Text Recognition:
+  - Extract text directly from images and camera views.
+- 🌐 Instant Translation:
+  - Translate recognized text into your preferred language.
+- 🔎 Object Recognition:
+  - Detect and analyze objects in your surroundings (Support both local and online AI analysis).
+- 📱 QR Scanner:
+  - Scan QR codes and safely choose what to do with the result.
+
+---
 ## 🔬 OpenBSA
 
 ### Open Battery Simulation Agent
