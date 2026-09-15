@@ -1,7 +1,7 @@
 # [Feaxr LLC](https://feaxr.com)
 
 <p align="center">
-  <strong>Applied AI for Scientific Computing and Digital Twins</strong><br>
+  <strong>Applied AI for Scientific Computing and Embodied Intelligent Digital Twins</strong><br>
   Building intelligent software for engineering, energy science, and advanced manufacturing.
 </p>
 
@@ -13,7 +13,7 @@
 
 Our mission is to bridge AI with engineering by developing intelligent software that helps researchers, engineers, and innovators better understand, simulate, and optimize complex physical systems.
 
-Rather than building AI for general-purpose use, we focus on applying AI where it can deliver measurable value—in scientific research, engineering analysis, and digital twin technologies.
+Rather than building AI for general-purpose use, we focus on applying AI where it can deliver measurable value—in scientific research, engineering analysis, and embodied intelligent digital twin technologies.
 
 ---
 
