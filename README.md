@@ -19,7 +19,7 @@ Rather than building AI for general-purpose use, we focus on applying AI where i
 
 # Our Vision
 
-We believe the future of engineering lies in **intelligent Digital Twins**—virtual representations of physical systems that continuously assist with analysis, prediction, monitoring, and optimization.
+We believe the future of engineering lies in **Embodied Intelligent Digital Twins**—virtual representations of physical systems that continuously assist with analysis, prediction, monitoring, and optimization.
 
 By combining Artificial Intelligence with scientific computing and immersive visualization, Feaxr aims to make engineering tools more intuitive, interactive, and accessible.
 
@@ -35,7 +35,7 @@ Our long-term vision is to enable engineers to collaborate naturally with intell
 
 DrLiBat transforms Android devices into intelligent battery diagnostic laboratories.
 
-Built upon scientific battery models and AI-powered analytics, DrLiBat provides users with deeper insights into battery health, charging behavior, thermal performance, and long-term degradation.
+Built upon scientific battery models and AI-powered analytics, DrLiBat provides users with deeper insights into battery health, charging behavior, thermal performance, and long-term degradation. It implemented a patch-based MLP-Mixer architecture enhanced with Mixture-of-Experts (MoE) and linear gated attention to deliver ultra-fast battery indices forecasting without the computational overhead of traditional self-attention.
 
 Key focuses include:
 
@@ -104,7 +104,7 @@ Key focuses include:
 - Education and research
 
 ---
-## 🖨️ AI Digital Twins for Additive Manufacturing
+## 🖨️ XR3D: AI Digital Twins for Additive Manufacturing
 
 ### From a Photograph to Engineering Insight
 
@@ -120,7 +120,7 @@ Current research focuses on:
 - 🧩 Automatic mesh generation
 - ⚡ Parallel finite element simulation
 - 🔬 Residual stress prediction
-- 🖨️ Digital Twins for additive manufacturing
+- 🖨️ Embodied Intelligent Digital Twins for additive manufacturing
 
 Our long-term vision is to create an intelligent engineering assistant capable of transforming a simple photograph into a simulation-ready Digital Twin for design verification, manufacturing optimization, and engineering analysis.
 
@@ -137,9 +137,9 @@ Building AI platforms that assist researchers and engineers in solving complex s
 
 Developing AI-assisted simulation tools that make engineering analysis more efficient and accessible.
 
-### 🌐 Digital Twins
+### 🌐 Embodied Intelligent Digital Twins
 
-Creating intelligent digital representations of physical systems for analysis, monitoring, and optimization.
+Creating embodied intelligent digital representations of physical systems for analysis, monitoring, and optimization.
 
 ### ⚙️ Advanced Manufacturing
 
@@ -175,7 +175,7 @@ Feaxr continues to explore the convergence of:
 
 - Artificial Intelligence
 - Scientific Computing
-- Digital Twins
+- Digital Twins/Embodied Intelligence
 - Energy Science
 - Advanced Manufacturing
 
@@ -209,7 +209,7 @@ Together, we can build the next generation of intelligent scientific software.
 
 <p align="center">
 <strong>Feaxr LLC</strong><br>
-Applied AI for Scientific Computing and Digital Twins
+Applied AI for Scientific Computing and Embodied Intelligent Digital Twins
 </p>
 
 ---
