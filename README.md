@@ -141,7 +141,7 @@ Developing AI-assisted simulation tools that make engineering analysis more effi
 
 Creating embodied intelligent digital representations of physical systems for analysis, monitoring, and optimization.
 
-### ⚙️ Advanced Manufacturing
+### ⚙️ Additive Manufacturing
 
 Applying AI and Digital Twin technologies to additive manufacturing, including geometry reconstruction, process simulation, and residual stress prediction.
 
@@ -177,7 +177,7 @@ Feaxr continues to explore the convergence of:
 - Scientific Computing
 - Digital Twins/Embodied Intelligence
 - Energy Science
-- Advanced Manufacturing
+- Additive Manufacturing
 
 We believe the next generation of engineering software will not simply perform calculations—it will collaborate with engineers through intelligent Digital Twins capable of understanding both data and the physical systems they represent.
 
