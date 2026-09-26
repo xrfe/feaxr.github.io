@@ -1,5 +1,5 @@
 <h1>Privacy Policy</h1>
-<p>Last updated: August 24, 2026</p>
+<p>Last updated: September 24, 2026</p>
 <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
 <p>We use Your Personal Data to provide and improve the Service. We collect, use, and disclose Your information as described in this Privacy Policy and, where required by applicable law, only where We have a valid legal basis to do so, including Your consent (where consent is required). This Privacy Policy has been created with the help of the <a href="https://www.termsfeed.com/privacy-policy-generator/" target="_blank">Privacy Policy Generator</a>.</p>
 <h2>Interpretation and Definitions</h2>
@@ -168,5 +168,5 @@
 <h2>Contact Us</h2>
 <p>If You have any questions about this Privacy Policy, You can contact Us:</p>
 <ul>
-<li>By email: rhuta@msn.com</li>
+<li>By email: feaxr@outlook.com</li>
 </ul>
