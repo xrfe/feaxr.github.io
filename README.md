@@ -46,8 +46,19 @@ Key focuses include:
 - Privacy-first on-device intelligence
 
 ---
+## 🤖 [Esum](https://play.google.com/store/apps/details?id=com.feaxr.esum): Private AI SI assistant
 
-## 🤖 [AINI](https://play.google.com/store/apps/details?id=com.feaxr.aini): Your Private AI Entrance
+**Esum** is a voice-activated AI personal assistant and assistive navigation tool designed for Android. Built with an accessible, on-device AI architecture, Esum provides hands-free voice interaction, screen reading assistance, and multi-step task navigation.
+
+Esum transforms your phone into a personal copilot. Featuring a 100% privacy-first architecture, Esum seamlessly executes device tasks, remembers your context, and runs on-device local models or cloud LLM providers.
+- 🧠 1. Hybrid Local & Cloud AI Intelligence
+- ⚡ 2. Multi-Step Planning Engine
+- 💾 3. Persistent Hybrid Memory & Habit Intelligence
+- 🔄 4. Scheduled & Background Tasks
+- 🎙️ 5. Voice, Vision & Multimodal Control
+
+---
+## 🔍 [AINI](https://play.google.com/store/apps/details?id=com.feaxr.aini): Your Private AI Entrance
 
 ### Artificial Intelligence Nexus Interface
 
