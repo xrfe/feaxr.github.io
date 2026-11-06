@@ -67,6 +67,16 @@ It provides a unified interface for interacting with modern AI models while emph
 AINI serves as the foundation for many future AI-powered scientific and engineering applications developed by Feaxr.
 
 ---
+## 🔍 [Skillall](https://play.google.com/store/apps/details?id=com.feaxr.skillall): Universal AI Experts
+
+**Skillall** is a minimalist, personal AI skills launcher designed to streamline prompt engineering, boost productivity, and execute reusable AI prompt skills through external AI apps or directly inside the application.
+Whether you rely on ChatGPT, Claude, or Gemini, Skillall helps you structure, store, and launch context-rich prompts in seconds without retyping templates or losing track of effective workflows.
+- 🧠 1. 20+ Built-in Starter Skills Across 9 Categories
+- ⚡ 2. Open Agent Skills Format & SAF Import/Export
+- 💬 3. Built-in Interactive AI Chat with Rich Text
+- 📲 4. One-Tap External App Handoff
+- 🎛️ 5. Dynamic Input Schema Forms
+---
 ## 📷 [Privacy Scan](https://play.google.com/store/apps/details?id=com.feaxr.camdetect): Camera Detector
 
 **Privacy Scan** is a privacy-first Android app that helps users identify potential hidden cameras and suspicious optical sources using their phone's camera and on-device AI.
