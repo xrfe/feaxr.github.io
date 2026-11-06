@@ -1,453 +1,1002 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FEAXR AI | Applied AI for Scientific Computing & Digital Twins</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="FEAXR AI explores AI for engineering simulation, battery analysis, and useful applications."
+    />
+    <title>FEAXR AI | Intelligence for the physical world</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --bg-color: #080b11;
-            --card-bg: rgba(15, 23, 42, 0.65);
-            --card-border: rgba(56, 189, 248, 0.15);
-            --card-border-hover: rgba(56, 189, 248, 0.4);
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --accent-cyan: #38bdf8;
-            --accent-blue: #6366f1;
-            --accent-emerald: #10b981;
-            --accent-glow: rgba(56, 189, 248, 0.25);
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+      :root {
+        --bg: #080d13;
+        --panel: #101922;
+        --line: #26343c;
+        --text: #eff5f1;
+        --muted: #9aabae;
+        --lime: #c5f57d;
+        --cyan: #75d4d0;
+        --mono: "IBM Plex Mono", monospace;
+        --sans: "DM Sans", sans-serif;
+        --display: "Space Grotesk", sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        color: var(--text);
+        background: var(--bg);
+        font-family: var(--sans);
+        line-height: 1.65;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      a:focus-visible {
+        outline: 2px solid var(--lime);
+        outline-offset: 5px;
+      }
+      .wrap {
+        width: min(1240px, calc(100% - 80px));
+        margin: auto;
+      }
+      .nav {
+        height: 88px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+      }
+      .logo {
+        font-family: var(--display);
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.06em;
+      }
+      .logo span {
+        color: var(--lime);
+      }
+      .logo small {
+        font: 500 9px var(--mono);
+        letter-spacing: 0.12em;
+        color: #a1b2ae;
+        margin-left: 8px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 34px;
+        align-items: center;
+        font-size: 13px;
+        color: #b7c6c4;
+      }
+      .nav-links a:hover {
+        color: var(--lime);
+      }
+      .nav-button {
+        border: 1px solid #53645c;
+        padding: 10px 16px;
+        color: var(--text) !important;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 620px;
+        align-items: center;
+        gap: 60px;
+        padding: 75px 0;
+      }
+      .eyebrow {
+        font: 500 11px var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--lime);
+      }
+      .eyebrow:before {
+        content: "◆";
+        font-size: 8px;
+        margin-right: 10px;
+      }
+      .hero h1 {
+        font: 500 clamp(48px, 5.2vw, 75px) / 1.04 var(--display);
+        letter-spacing: -0.055em;
+        margin: 26px 0;
+      }
+      .hero h1 span {
+        color: var(--lime);
+      }
+      .hero p {
+        font-size: 17px;
+        color: var(--muted);
+        max-width: 535px;
+        margin: 0;
+      }
+      .actions {
+        display: flex;
+        gap: 26px;
+        align-items: center;
+        margin-top: 38px;
+      }
+      .btn {
+        background: var(--lime);
+        color: #111b13;
+        padding: 14px 19px;
+        font-size: 13px;
+        font-weight: 700;
+        display: inline-flex;
+        gap: 35px;
+        align-items: center;
+      }
+      .btn:hover {
+        background: #dbffa5;
+      }
+      .secondary {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .secondary:hover {
+        color: var(--lime);
+      }
+      .hero-visual {
+        height: 440px;
+        border: 1px solid #30413e;
+        background: radial-gradient(
+          ellipse at 50% 45%,
+          #243f36 0%,
+          #101c20 48%,
+          #0b141b 80%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-visual:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(#a7d2b211 1px, transparent 1px),
+          linear-gradient(90deg, #a7d2b211 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+      .visual-top,
+      .visual-bottom {
+        z-index: 1;
+        position: absolute;
+        left: 22px;
+        right: 22px;
+        display: flex;
+        justify-content: space-between;
+        font: 10px var(--mono);
+        letter-spacing: 0.08em;
+        color: #8fa7a0;
+      }
+      .visual-top {
+        top: 20px;
+      }
+      .visual-bottom {
+        bottom: 20px;
+      }
+      .visual-top span:last-child {
+        color: var(--lime);
+      }
+      .mesh {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        object-fit: contain;
+      }
+      .visual-label {
+        z-index: 1;
+        position: absolute;
+        right: 28px;
+        bottom: 52px;
+        font: 10px var(--mono);
+        color: #8ca49c;
+      }
+      .ticker {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px 0;
+        font: 10px var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #8ca09f;
+      }
+      .ticker strong {
+        color: var(--lime);
+        font-weight: 500;
+      }
+      .section {
+        padding: 110px 0;
+      }
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        align-items: end;
+        margin-bottom: 40px;
+      }
+      .section-head h2,
+      .about h2,
+      .contact h2 {
+        font: 500 clamp(36px, 4.2vw, 58px) / 1.1 var(--display);
+        letter-spacing: -0.045em;
+        margin: 16px 0 0;
+      }
+      .section-head p {
+        max-width: 410px;
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0;
+      }
+      .research-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .research-card {
+        border: 1px solid var(--line);
+        background: #0d151c;
+      }
+      .project-art {
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(135deg, #13292a, #101820);
+      }
+      .project-art:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(#b6eac80c 1px, transparent 1px),
+          linear-gradient(90deg, #b6eac80c 1px, transparent 1px);
+        background-size: 25px 25px;
+      }
+      .battery-shape {
+        position: absolute;
+        inset: 42px 22%;
+        border: 1px solid #89d7ae;
+        transform: skewY(-8deg);
+        box-shadow:
+          12px 12px 0 -1px #1b3430,
+          12px 12px 0 0 #549a7c;
+        background: repeating-linear-gradient(
+          90deg,
+          #90e6a133 0 8%,
+          transparent 8% 11%
+        );
+      }
+      .battery-shape:after {
+        content: "Li+";
+        position: absolute;
+        left: 45%;
+        top: 30%;
+        font: 500 28px var(--mono);
+        color: #b6f1bb;
+      }
+      .mesh-art svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #020a1c;
+      }
+      .project-label {
+        position: absolute;
+        left: 20px;
+        bottom: 16px;
+        color: #9cb1a8;
+        font: 10px var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .research-body {
+        padding: 27px 30px 31px;
+      }
+      .meta {
+        font: 10px var(--mono);
+        letter-spacing: 0.12em;
+        color: var(--lime);
+        text-transform: uppercase;
+      }
+      .research-body h3 {
+        font: 500 30px var(--display);
+        letter-spacing: -0.03em;
+        margin: 12px 0 3px;
+      }
+      .subtitle {
+        color: #d5e1d9;
+        font-size: 14px;
+        margin: 0 0 13px;
+      }
+      .research-body p:not(.subtitle) {
+        font-size: 14px;
+        color: var(--muted);
+        margin: 0;
+        max-width: 490px;
+      }
+      .research-body a {
+        display: inline-block;
+        margin-top: 23px;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--lime);
+      }
+      .divider {
+        border-top: 1px solid var(--line);
+      }
+      .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .app {
+        background: #0c141a;
+        padding: 26px;
+        min-height: 260px;
+        display: flex;
+        flex-direction: column;
+      }
+      .app-icon {
+        color: var(--lime);
+        font: 500 13px var(--mono);
+        margin-bottom: 30px;
+      }
+      .app h3 {
+        font: 500 22px var(--display);
+        margin: 0 0 3px;
+      }
+      .app .type {
+        font: 10px var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #8ca39b;
+      }
+      .app p {
+        font-size: 13px;
+        color: var(--muted);
+        margin: 15px 0 25px;
+      }
+      .app a {
+        margin-top: auto;
+        font: 500 11px var(--mono);
+        color: #d5efb7;
+      }
+      .app a:hover,
+      .research-body a:hover {
+        text-decoration: underline;
+      }
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12%;
+        padding: 90px 0;
+      }
+      .about p {
+        font-size: 16px;
+        color: var(--muted);
+        margin: 9px 0 28px;
+      }
+      .principles {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .principles span {
+        border: 1px solid #34483e;
+        padding: 8px 12px;
+        font: 10px var(--mono);
+        color: #b8ccb9;
+        text-transform: uppercase;
+      }
+      .contact {
+        background: #bded7e;
+        color: #162318;
+        padding: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 35px;
+      }
+      .contact .eyebrow {
+        color: #3b6140;
+      }
+      .contact h2 {
+        margin: 12px 0;
+        font-size: clamp(34px, 4vw, 53px);
+      }
+      .contact p {
+        margin: 0;
+        color: #496248;
+        font-size: 14px;
+      }
+      .contact .btn {
+        background: #16271d;
+        color: #eaf8df;
+        white-space: nowrap;
+      }
+      .contact .btn:hover {
+        background: #2c4935;
+      }
+      footer {
+        padding: 45px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        color: #7f9491;
+        font-size: 11px;
+      }
+      footer .logo {
+        color: var(--text);
+      }
+      .footer-links {
+        display: flex;
+        gap: 25px;
+      }
+      footer a:hover {
+        color: var(--lime);
+      }
+      @media (max-width: 850px) {
+        .wrap {
+          width: min(100% - 40px, 650px);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        .nav {
+          height: 72px;
         }
-
-        body {
-            background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15), transparent 50%),
-                radial-gradient(circle at 0% 100%, rgba(56, 189, 248, 0.1), transparent 40%),
-                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding: 0 1.5rem;
-            min-height: 100vh;
+        .nav-links {
+          gap: 16px;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 4rem 0;
+        .nav-links a:not(.nav-button) {
+          display: none;
         }
-
-        /* Tech Badges */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: var(--accent-cyan);
-            font-family: var(--font-mono);
-            font-size: 0.825rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 70px 0;
+          gap: 45px;
         }
-
-        .badge-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: var(--accent-cyan);
-            box-shadow: 0 0 8px var(--accent-cyan);
+        .hero-visual {
+          height: 380px;
         }
-
-        /* Hero Section */
-        header.hero {
-            text-align: center;
-            padding: 3rem 1rem 5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        .ticker {
+          flex-wrap: wrap;
         }
-
-        header.hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+        .section {
+          padding: 75px 0;
         }
-
-        header.hero p.tagline {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 750px;
-            margin: 0 auto;
-            font-weight: 300;
+        .section-head {
+          display: block;
         }
-
-        /* Section Styling */
-        section {
-            margin: 5rem 0;
+        .section-head p {
+          margin-top: 18px;
         }
-
-        .section-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+        .research-grid {
+          grid-template-columns: 1fr;
         }
-
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 1.5rem;
-            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-blue));
-            border-radius: 2px;
+        .apps-grid {
+          grid-template-columns: 1fr 1fr;
         }
-
-        /* Cards & Grid Layout */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
+        .about {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          padding: 65px 0;
         }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 2rem;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+        .contact {
+          padding: 40px 28px;
+          align-items: flex-start;
+          flex-direction: column;
         }
-
-        .card:hover {
-            border-color: var(--card-border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px -10px var(--accent-glow);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            font-size: 1.35rem;
-            color: var(--text-main);
-        }
-
-        .card h3 a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .card h3 a:hover {
-            color: var(--accent-cyan);
-        }
-
-        .card-subtitle {
-            font-size: 0.875rem;
-            font-family: var(--font-mono);
-            color: var(--accent-cyan);
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .card-list {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
-
-        .card-list li {
-            position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .card-list li::before {
-            content: '›';
-            position: absolute;
-            left: 0;
-            color: var(--accent-cyan);
-            font-weight: bold;
-        }
-
-        /* App External Button */
-        .btn-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-family: var(--font-mono);
-            transition: all 0.2s;
-        }
-
-        .btn-link:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            font-weight: 600;
-        }
-
-        /* Pillars & Philosophy */
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .pillar-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .pillar-card h4 {
-            color: var(--accent-cyan);
-            font-family: var(--font-mono);
-            margin-bottom: 0.5rem;
-        }
-
-        .pillar-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* Footer */
         footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 3rem 0 1rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+          align-items: flex-start;
+          flex-direction: column;
         }
-
-        footer p {
-            margin-bottom: 0.5rem;
+      }
+      @media (max-width: 500px) {
+        .apps-grid {
+          grid-template-columns: 1fr;
         }
-
-        .mono {
-            font-family: var(--font-mono);
+        .hero-visual {
+          height: 300px;
         }
+        .actions {
+          gap: 18px;
+        }
+        .ticker span:last-child {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
     </style>
-</head>
-<body>
-
-    <div class="container">
-        
-        <!-- HERO SECTION -->
-        <header class="hero">
-            <div class="badge">
-                <span class="badge-dot"></span> Next-Gen Intelligent Engineering
+  </head>
+  <body>
+    <header class="wrap nav">
+      <a class="logo" href="#top"
+        >FEAXR<span>.</span><small>AI / ENGINEERING</small></a
+      >
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#research">Research</a><a href="#apps">Applications</a
+        ><a href="#about">About</a
+        ><a class="nav-button" href="mailto:info@feaxr.com">Contact us ↗</a>
+      </nav>
+    </header>
+    <main id="top">
+      <section class="wrap hero">
+        <div>
+          <div class="eyebrow">Applied AI · Scientific computing</div>
+          <h1>Intelligence for the <span>physical world.</span></h1>
+          <p>
+            FEAXR explores AI for engineering simulation, battery analysis, and
+            intelligent tools that connect computation with the world around us.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#research">Explore our work <span>↘</span></a
+            ><a class="secondary" href="mailto:info@feaxr.com"
+              >Start a conversation ↗</a
+            >
+          </div>
+        </div>
+        <div
+          class="hero-visual"
+          aria-label="Conceptual illustration of a finite element mesh on a car body"
+        >
+          <div class="visual-top">
+            <span>FEAXR / COMPUTATIONAL SYSTEMS</span><span>● RESEARCH</span>
+          </div>
+          <svg
+            class="mesh"
+            viewBox="0 0 600 360"
+            role="img"
+            aria-label="Conceptual triangular finite element mesh on a car"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <clipPath id="car-clip">
+                <path
+                  d="M55 230 L67 195 Q82 182 135 174 L205 110 Q224 94 253 92 L365 92 Q395 93 421 112 L481 160 L526 171 Q548 176 557 196 L564 230 L550 244 L526 244 Q522 210 492 210 Q462 210 457 244 L188 244 Q184 210 154 210 Q124 210 119 244 L72 244 Z"
+                />
+              </clipPath>
+              <linearGradient id="car-glow" x2="1" y2="1">
+                <stop stop-color="#193b33" />
+                <stop offset="1" stop-color="#0a151b" />
+              </linearGradient>
+            </defs>
+            <rect width="600" height="360" fill="#09131a" />
+            <path
+              d="M55 230 L67 195 Q82 182 135 174 L205 110 Q224 94 253 92 L365 92 Q395 93 421 112 L481 160 L526 171 Q548 176 557 196 L564 230 L550 244 L526 244 Q522 210 492 210 Q462 210 457 244 L188 244 Q184 210 154 210 Q124 210 119 244 L72 244 Z"
+              fill="url(#car-glow)"
+              stroke="#b7e99a"
+              stroke-width="2"
+            />
+            <g
+              clip-path="url(#car-clip)"
+              stroke="#93d99b"
+              stroke-opacity=".55"
+              stroke-width=".8"
+            >
+              <path d="M35 75 H575" />
+              <path d="M35 91 H575" />
+              <path d="M35 107 H575" />
+              <path d="M35 123 H575" />
+              <path d="M35 139 H575" />
+              <path d="M35 155 H575" />
+              <path d="M35 171 H575" />
+              <path d="M35 187 H575" />
+              <path d="M35 203 H575" />
+              <path d="M35 219 H575" />
+              <path d="M35 235 H575" />
+              <path d="M35 251 H575" />
+              <path d="M35 267 H575" />
+              <path d="M-250 75 L-20 280 M-20 75 L-250 280" />
+              <path d="M-228 75 L2 280 M2 75 L-228 280" />
+              <path d="M-206 75 L24 280 M24 75 L-206 280" />
+              <path d="M-184 75 L46 280 M46 75 L-184 280" />
+              <path d="M-162 75 L68 280 M68 75 L-162 280" />
+              <path d="M-140 75 L90 280 M90 75 L-140 280" />
+              <path d="M-118 75 L112 280 M112 75 L-118 280" />
+              <path d="M-96 75 L134 280 M134 75 L-96 280" />
+              <path d="M-74 75 L156 280 M156 75 L-74 280" />
+              <path d="M-52 75 L178 280 M178 75 L-52 280" />
+              <path d="M-30 75 L200 280 M200 75 L-30 280" />
+              <path d="M-8 75 L222 280 M222 75 L-8 280" />
+              <path d="M14 75 L244 280 M244 75 L14 280" />
+              <path d="M36 75 L266 280 M266 75 L36 280" />
+              <path d="M58 75 L288 280 M288 75 L58 280" />
+              <path d="M80 75 L310 280 M310 75 L80 280" />
+              <path d="M102 75 L332 280 M332 75 L102 280" />
+              <path d="M124 75 L354 280 M354 75 L124 280" />
+              <path d="M146 75 L376 280 M376 75 L146 280" />
+              <path d="M168 75 L398 280 M398 75 L168 280" />
+              <path d="M190 75 L420 280 M420 75 L190 280" />
+              <path d="M212 75 L442 280 M442 75 L212 280" />
+              <path d="M234 75 L464 280 M464 75 L234 280" />
+              <path d="M256 75 L486 280 M486 75 L256 280" />
+              <path d="M278 75 L508 280 M508 75 L278 280" />
+              <path d="M300 75 L530 280 M530 75 L300 280" />
+              <path d="M322 75 L552 280 M552 75 L322 280" />
+              <path d="M344 75 L574 280 M574 75 L344 280" />
+              <path d="M366 75 L596 280 M596 75 L366 280" />
+              <path d="M388 75 L618 280 M618 75 L388 280" />
+              <path d="M410 75 L640 280 M640 75 L410 280" />
+              <path d="M432 75 L662 280 M662 75 L432 280" />
+              <path d="M454 75 L684 280 M684 75 L454 280" />
+              <path d="M476 75 L706 280 M706 75 L476 280" />
+              <path d="M498 75 L728 280 M728 75 L498 280" />
+              <path d="M520 75 L750 280 M750 75 L520 280" />
+              <path d="M542 75 L772 280 M772 75 L542 280" />
+              <path d="M564 75 L794 280 M794 75 L564 280" />
+              <path d="M586 75 L816 280 M816 75 L586 280" />
+              <path d="M608 75 L838 280 M838 75 L608 280" />
+              <path d="M630 75 L860 280 M860 75 L630 280" />
+            </g>
+            <g
+              fill="#0a1920"
+              fill-opacity=".72"
+              stroke="#b7e99a"
+              stroke-width="1.5"
+            >
+              <path
+                d="M154 170 L211 118 Q225 106 250 106 L275 106 L267 169 Z"
+              />
+              <path
+                d="M282 106 L362 106 Q384 106 405 122 L459 166 L277 169 Z"
+              />
+            </g>
+            <g fill="none" stroke="#b7e99a" stroke-width="1.3">
+              <path
+                d="M271 104 L267 238 M413 130 L425 238 M70 196 L134 190 M463 175 L530 183 M205 233 H441 M286 182 H310 M425 182 H446"
+              />
+              <circle cx="154" cy="244" r="31" />
+              <circle cx="154" cy="244" r="20" />
+              <circle cx="492" cy="244" r="31" />
+              <circle cx="492" cy="244" r="20" />
+              <path
+                d="M127 229 L181 259 M127 259 L181 229 M154 213 V275 M123 244 H185 M465 229 L519 259 M465 259 L519 229 M492 213 V275 M461 244 H523"
+              />
+            </g>
+            <path d="M68 289 H548" stroke="#78b98f" stroke-opacity=".25" />
+            <text
+              x="68"
+              y="308"
+              fill="#829b91"
+              font-family="monospace"
+              font-size="9"
+              letter-spacing="2"
+            >
+              ILLUSTRATIVE SURFACE MESH
+            </text>
+          </svg>
+          <div class="visual-label">CONCEPTUAL VISUALIZATION</div>
+          <div class="visual-bottom">
+            <span>MODEL / PHYSICS / COMPUTE</span><span>01 — 03</span>
+          </div>
+        </div>
+      </section>
+      <div class="wrap ticker">
+        <span><strong>01</strong> Scientific computing</span
+        ><span><strong>02</strong> Engineering simulation</span
+        ><span><strong>03</strong> Applied intelligence</span>
+      </div>
+      <section class="wrap section" id="research">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Research & platforms</div>
+            <h2>From physical questions<br />to computational insight.</h2>
+          </div>
+          <p>
+            Exploring how AI and numerical methods can support the analysis of
+            complex systems—from battery behavior to manufacturing.
+          </p>
+        </div>
+        <div class="research-grid">
+          <article class="research-card">
+            <div class="project-art">
+              <div class="battery-shape"></div>
+              <div class="project-label">
+                Concept illustration / battery systems
+              </div>
             </div>
-            <h1>FEAXR AI</h1>
-            <p class="tagline">Applied AI for Scientific Computing & Embodied Intelligent Digital Twins</p>
-        </header>
-
-        <!-- ABOUT SECTION -->
-        <section id="about">
-            <div class="card" style="background: rgba(15, 23, 42, 0.4);">
-                <h2 style="margin-bottom: 1rem; font-size: 1.5rem;">Pioneering AI in Engineering Analysis</h2>
-                <p><strong>FEAXR AI</strong> bridges artificial intelligence with scientific computing to understand, simulate, and optimize complex physical systems. Rather than building general-purpose models, we focus on high-impact domains including energy science, additive manufacturing, and real-time physical diagnostic tools.</p>
+            <div class="research-body">
+              <div class="meta">01 / Battery simulation</div>
+              <h3>OpenBSA</h3>
+              <p class="subtitle">Open Battery Simulation Agent</p>
+              <p>
+                A web-based lithium-ion simulation platform paired with an LLM
+                assistant, designed to help researchers configure models and
+                explore cell behavior.
+              </p>
+              <a href="mailto:info@feaxr.com?subject=OpenBSA%20inquiry"
+                >Ask about OpenBSA ↗</a
+              >
             </div>
-        </section>
-
-        <!-- WHAT WE BUILD (PRODUCTS) -->
-        <section id="products">
-            <h2 class="section-title">What We Build</h2>
-            <div class="grid">
-                
-                <!-- DrLiBat -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🔋 DrLiBat</h3>
-                    </div>
-                    <div class="card-subtitle">Scientific Battery Lab</div>
-                    <p>Transforms mobile devices into diagnostic labs. Features a patch-based MLP-Mixer with MoE and linear gated attention for instant battery health, thermal performance, and aging forecasting.</p>
-                    <ul class="card-list">
-                        <li>Privacy-first on-device intelligence</li>
-                        <li>Charging & thermal optimization</li>
-                        <li>Deep degradation profiling</li>
-                    </ul>
-                    <a href="https://play.google.com/store/apps/details?id=com.echoxy.drlibat" target="_blank" class="btn-link">Google Play ↗</a>
-                </div>
-
-                <!-- Esum -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🤖 Esum</h3>
-                    </div>
-                    <div class="card-subtitle">Private AI SI Assistant</div>
-                    <p>Voice-activated copilot and assistive navigation tool. Built on a 100% private, on-device architecture for multi-step task execution, contextual memory, and screen reading.</p>
-                    <ul class="card-list">
-                        <li>Hybrid Local & Cloud AI engine</li>
-                        <li>Persistent hybrid habit intelligence</li>
-                        <li>Multimodal & voice interaction</li>
-                    </ul>
-                    <a href="https://play.google.com/store/apps/details?id=com.feaxr.esum" target="_blank" class="btn-link">Google Play ↗</a>
-                </div>
-
-                <!-- Skillall -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🔍 Skillall</h3>
-                    </div>
-                    <div class="card-subtitle">Universal AI Experts</div>
-                    <p>Minimalist AI skills launcher designed to streamline prompt engineering, store reusable workflows, and execute context-rich prompts across ChatGPT, Claude, Gemini, or directly inside the app.</p>
-                    <ul class="card-list">
-                        <li>20+ Built-in Starter Skills Across 9 Categories</li>
-                        <li>Open Agent Skills Format & SAF Import/Export</li>
-                        <li>Built-in Interactive AI Chat with Rich Text</li>
-                        <li>One-Tap External App Handoff</li>
-                        <li>Dynamic Input Schema Forms</li>
-                    </ul>
-                    <a href="https://play.google.com/store/apps/details?id=com.feaxr.skillall" target="_blank" class="btn-link">Google Play ↗</a>
-                </div>
-                
-                <!-- AINI -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🔍 AINI</h3>
-                    </div>
-                    <div class="card-subtitle">Artificial Intelligence Nexus Interface</div>
-                    <p>A unified entrance interface for AI interaction. Acts as the core platform foundation for Feaxr's future scientific and engineering software suites.</p>
-                    <ul class="card-list">
-                        <li>Unified multi-model workflow</li>
-                        <li>Optimized local execution</li>
-                        <li>High-efficiency privacy architecture</li>
-                    </ul>
-                    <a href="https://play.google.com/store/apps/details?id=com.feaxr.aini" target="_blank" class="btn-link">Google Play ↗</a>
-                </div>
-
-                <!-- Privacy Scan -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📷 Privacy Scan</h3>
-                    </div>
-                    <div class="card-subtitle">Camera Detector & Analysis</div>
-                    <p>On-device optical inspection app designed to detect hidden camera lenses and infrared reflections using real-time Computer Vision.</p>
-                    <ul class="card-list">
-                        <li>ML Kit & CameraX integration</li>
-                        <li>Multi-signal confidence scoring</li>
-                        <li>Zero cloud processing or data transfer</li>
-                    </ul>
-                    <a href="https://play.google.com/store/apps/details?id=com.feaxr.camdetect" target="_blank" class="btn-link">Google Play ↗</a>
-                </div>
-
-                <!-- DrLens -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3>👁️ DrLens</h3>
-                    </div>
-                    <div class="card-subtitle">AI Vision Assistant</div>
-                    <p>Visual assistant for real-time optical character recognition, multi-language translation, object scanning, and secure barcode parsing.</p>
-                    <ul class="card-list">
-                        <li>On-device OCR & Instant Translation</li>
-                        <li>Local & Online Object Detection</li>
-                        <li>Privacy-shielded QR parsing</li>
-                    </ul>
-                    <a href="https://play.google.com/store/apps/details?id=com.feaxr.drlens" target="_blank" class="btn-link">Google Play ↗</a>
-                </div>
-
+          </article>
+          <article class="research-card">
+            <div class="project-art mesh-art">
+              <svg
+                viewBox="0 0 600 270"
+                role="img"
+                aria-label="Conceptual finite element heatmap on a turbine blade"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient id="blade-heat" x1="0" y1="1" x2=".65" y2="0">
+                    <stop stop-color="#243ed8" />
+                    <stop offset=".25" stop-color="#16a6d2" />
+                    <stop offset=".5" stop-color="#61d183" />
+                    <stop offset=".75" stop-color="#edcc54" />
+                    <stop offset="1" stop-color="#e76b50" />
+                  </linearGradient>
+                  <clipPath id="blade-clip">
+                    <path
+                      d="M226 192 Q255 178 267 145 Q286 91 321 49 Q351 16 413 20 Q375 56 369 107 Q362 162 332 191 Z"
+                    />
+                  </clipPath>
+                </defs>
+                <rect width="600" height="270" fill="#0c1920" />
+                <g stroke="#8cc9b1" stroke-opacity=".08">
+                  <path
+                    d="M0 54 H600 M0 108 H600 M0 162 H600 M0 216 H600 M75 0 V270 M150 0 V270 M225 0 V270 M300 0 V270 M375 0 V270 M450 0 V270 M525 0 V270"
+                  />
+                </g>
+                <path
+                  d="M226 192 Q255 178 267 145 Q286 91 321 49 Q351 16 413 20 Q375 56 369 107 Q362 162 332 191 Z"
+                  fill="url(#blade-heat)"
+                  stroke="#b6dcc0"
+                  stroke-width="1.5"
+                />
+                <g
+                  clip-path="url(#blade-clip)"
+                  stroke="#122d36"
+                  stroke-opacity=".52"
+                  stroke-width=".8"
+                >
+                  <path d="M195 12 H435" />
+                  <path d="M195 25 H435" />
+                  <path d="M195 38 H435" />
+                  <path d="M195 51 H435" />
+                  <path d="M195 64 H435" />
+                  <path d="M195 77 H435" />
+                  <path d="M195 90 H435" />
+                  <path d="M195 103 H435" />
+                  <path d="M195 116 H435" />
+                  <path d="M195 129 H435" />
+                  <path d="M195 142 H435" />
+                  <path d="M195 155 H435" />
+                  <path d="M195 168 H435" />
+                  <path d="M195 181 H435" />
+                  <path d="M195 194 H435" />
+                  <path d="M195 207 H435" />
+                  <path d="M45 10 L225 210 M225 10 L45 210" />
+                  <path d="M63 10 L243 210 M243 10 L63 210" />
+                  <path d="M81 10 L261 210 M261 10 L81 210" />
+                  <path d="M99 10 L279 210 M279 10 L99 210" />
+                  <path d="M117 10 L297 210 M297 10 L117 210" />
+                  <path d="M135 10 L315 210 M315 10 L135 210" />
+                  <path d="M153 10 L333 210 M333 10 L153 210" />
+                  <path d="M171 10 L351 210 M351 10 L171 210" />
+                  <path d="M189 10 L369 210 M369 10 L189 210" />
+                  <path d="M207 10 L387 210 M387 10 L207 210" />
+                  <path d="M225 10 L405 210 M405 10 L225 210" />
+                  <path d="M243 10 L423 210 M423 10 L243 210" />
+                  <path d="M261 10 L441 210 M441 10 L261 210" />
+                  <path d="M279 10 L459 210 M459 10 L279 210" />
+                  <path d="M297 10 L477 210 M477 10 L297 210" />
+                  <path d="M315 10 L495 210 M495 10 L315 210" />
+                  <path d="M333 10 L513 210 M513 10 L333 210" />
+                  <path d="M351 10 L531 210 M531 10 L351 210" />
+                  <path d="M369 10 L549 210 M549 10 L369 210" />
+                  <path d="M387 10 L567 210 M567 10 L387 210" />
+                  <path d="M405 10 L585 210 M585 10 L405 210" />
+                  <path d="M423 10 L603 210 M603 10 L423 210" />
+                  <path d="M441 10 L621 210 M621 10 L441 210" />
+                </g>
+                <path
+                  d="M218 190 L340 190 L357 204 L340 216 L219 216 L204 205 Z"
+                  fill="#244a63"
+                  stroke="#80b8bf"
+                />
+                <path
+                  d="M232 216 H329 L323 233 H238 Z"
+                  fill="#17344d"
+                  stroke="#80b8bf"
+                />
+                <path
+                  d="M332 191 Q350 160 359 109 Q369 54 413 20"
+                  fill="none"
+                  stroke="#f4f2af"
+                  stroke-opacity=".6"
+                />
+                <path
+                  d="M433 73 H498 M433 82 H480"
+                  stroke="#6c958d"
+                  stroke-opacity=".45"
+                />
+                <text
+                  x="435"
+                  y="63"
+                  fill="#8aa59c"
+                  font-family="monospace"
+                  font-size="9"
+                  letter-spacing="1"
+                >
+                  ILLUSTRATIVE
+                </text>
+              </svg>
+              <div class="project-label">
+                Concept illustration / turbine blade heatmap
+              </div>
             </div>
-        </section>
-
-        <!-- RESEARCH & SCIENTIFIC PROJECTS -->
-        <section id="research">
-            <h2 class="section-title">Scientific Research & Platforms</h2>
-            <div class="grid">
-
-                <!-- OpenBSA -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🔬 OpenBSA</h3>
-                    </div>
-                    <div class="card-subtitle">Open Battery Simulation Agent</div>
-                    <p>Web-based Lithium-ion simulation platform paired with an embedded LLM assistant. Designed for researchers to simulate cell behaviors, configure models, and interpret physical parameters naturally.</p>
-                </div>
-
-                <!-- XR3D -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🖨️ XR3D</h3>
-                    </div>
-                    <div class="card-subtitle">AI Digital Twins for Additive Manufacturing</div>
-                    <p>Research workflow converting smartphone photographs into simulation-ready 3D meshes. Combines AI 3D reconstruction with parallel finite element analysis to compute residual stress and additive manufacturing deformations.</p>
-                </div>
-
+            <div class="research-body">
+              <div class="meta">02 / Additive manufacturing</div>
+              <h3>XR3D</h3>
+              <p class="subtitle">
+                AI digital twins for additive manufacturing
+              </p>
+              <p>
+                A research workflow exploring the path from smartphone
+                photographs to 3D meshes and finite element analysis of residual
+                stress and deformation.
+              </p>
+              <a href="mailto:info@feaxr.com?subject=XR3D%20inquiry"
+                >Ask about XR3D ↗</a
+              >
             </div>
-        </section>
-
-        <!-- PHILOSOPHY & PRINCIPLES -->
-        <section id="philosophy">
-            <h2 class="section-title">Core Philosophy</h2>
-            <div class="pillars-grid">
-                <div class="pillar-card">
-                    <h4>01. Practical</h4>
-                    <p>Every line of code is engineered to solve validated physical and engineering challenges.</p>
-                </div>
-                <div class="pillar-card">
-                    <h4>02. Scientific</h4>
-                    <p>Rooted in rigorous physical principles, numerical accuracy, and validated models.</p>
-                </div>
-                <div class="pillar-card">
-                    <h4>03. Intelligent</h4>
-                    <p>AI designed to elevate and collaborate with human domain expertise, not replace it.</p>
-                </div>
-                <div class="pillar-card">
-                    <h4>04. Efficient</h4>
-                    <p>Privacy-first architectures engineered for local computation and low latency.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER / CONTACT -->
-        <footer>
-            <p><strong>FEAXR AI</strong></p>
-            <p class="mono" style="font-size: 0.85rem; color: var(--accent-cyan);">info [at] feaxr.com</p>
-            <p style="margin-top: 1.5rem; opacity: 0.5; font-size: 0.8rem;">© 2026 Feaxr LLC. All rights reserved.</p>
-        </footer>
-
-    </div>
-
-</body>
+          </article>
+        </div>
+      </section>
+      <section class="wrap section divider" id="apps">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Applications</div>
+            <h2>Useful intelligence,<br />closer to you.</h2>
+          </div>
+          <p>
+            A collection of Android applications exploring battery diagnostics,
+            AI workflows, computer vision, and accessible assistance.
+          </p>
+        </div>
+        <div class="apps-grid">
+          <article class="app">
+            <div class="app-icon">01 / BATTERY</div>
+            <h3>DrLiBat</h3>
+            <div class="type">Scientific battery lab</div>
+            <p>
+              Explore battery health, thermal performance, and aging with mobile
+              diagnostic tools.
+            </p>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.echoxy.drlibat"
+              >VIEW ON GOOGLE PLAY ↗</a
+            >
+          </article>
+          <article class="app">
+            <div class="app-icon">02 / ASSISTANCE</div>
+            <h3>Esum</h3>
+            <div class="type">AI assistant</div>
+            <p>
+              A voice-activated assistant exploring task execution, screen
+              reading, and local and cloud AI.
+            </p>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.feaxr.esum"
+              >VIEW ON GOOGLE PLAY ↗</a
+            >
+          </article>
+          <article class="app">
+            <div class="app-icon">03 / WORKFLOWS</div>
+            <h3>Skillall</h3>
+            <div class="type">AI skills launcher</div>
+            <p>
+              Organize reusable AI workflows and use them with built-in chat or
+              supported external apps.
+            </p>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.feaxr.skillall"
+              >VIEW ON GOOGLE PLAY ↗</a
+            >
+          </article>
+          <article class="app">
+            <div class="app-icon">04 / INTERFACE</div>
+            <h3>AINI</h3>
+            <div class="type">AI interaction</div>
+            <p>
+              A unified interface for AI interaction and a foundation for future
+              software workflows.
+            </p>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.feaxr.aini"
+              >VIEW ON GOOGLE PLAY ↗</a
+            >
+          </article>
+          <article class="app">
+            <div class="app-icon">05 / VISION</div>
+            <h3>Privacy Scan</h3>
+            <div class="type">Optical inspection</div>
+            <p>
+              An on-device tool that uses computer vision to help identify
+              possible camera lenses and infrared reflections.
+            </p>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.feaxr.camdetect"
+              >VIEW ON GOOGLE PLAY ↗</a
+            >
+          </article>
+          <article class="app">
+            <div class="app-icon">06 / VISION</div>
+            <h3>DrLens</h3>
+            <div class="type">AI vision assistant</div>
+            <p>
+              Tools for text recognition, translation, object scanning, and
+              barcode parsing.
+            </p>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.feaxr.drlens"
+              >VIEW ON GOOGLE PLAY ↗</a
+            >
+          </article>
+        </div>
+      </section>
+      <section class="wrap about divider" id="about">
+        <div>
+          <div class="eyebrow">Our approach</div>
+          <h2>Built at the intersection of AI and engineering.</h2>
+        </div>
+        <div>
+          <p>
+            We believe useful intelligence starts with a real problem. FEAXR
+            brings together scientific computing, physical reasoning, and modern
+            AI to explore practical tools for researchers, engineers, and
+            everyday users.
+          </p>
+          <div class="principles">
+            <span>Physical systems</span><span>Scientific thinking</span
+            ><span>Practical tools</span><span>Thoughtful AI</span>
+          </div>
+        </div>
+      </section>
+      <section class="wrap contact">
+        <div>
+          <div class="eyebrow">Let's connect</div>
+          <h2>Have a question or an idea?</h2>
+          <p>Get in touch to learn more about our projects and applications.</p>
+        </div>
+        <a class="btn" href="mailto:info@feaxr.com"
+          >Contact FEAXR <span>↗</span></a
+        >
+      </section>
+    </main>
+    <footer class="wrap">
+      <a class="logo" href="#top"
+        >FEAXR<span>.</span><small>AI / ENGINEERING</small></a
+      ><span>© 2026 Feaxr LLC. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#research">Research</a><a href="#apps">Applications</a
+        ><a href="mailto:info@feaxr.com">Contact</a>
+      </div>
+    </footer>
+  </body>
 </html>
