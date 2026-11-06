@@ -233,4 +233,4 @@ Applied AI for Scientific Computing and Embodied Intelligent Digital Twins
 
 ---
 
-© 2026 Feaxr LLC. All rights reserved. Email: feaxr aatt outlook.com
+© 2026 Feaxr LLC. All rights reserved. Email: info aatt feaxr.com
