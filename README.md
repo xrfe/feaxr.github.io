@@ -1,5 +1,3 @@
-# [Feaxr LLC](https://feaxr.com)
-
 <p align="center">
   <strong>Applied AI for Scientific Computing and Embodied Intelligent Digital Twins</strong><br>
   Building intelligent software for engineering, energy science, and advanced manufacturing.
