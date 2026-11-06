@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feaxr LLC | Applied AI for Scientific Computing & Digital Twins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #080b11;
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --card-border: rgba(56, 189, 248, 0.15);
+            --card-border-hover: rgba(56, 189, 248, 0.4);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent-cyan: #38bdf8;
+            --accent-blue: #6366f1;
+            --accent-emerald: #10b981;
+            --accent-glow: rgba(56, 189, 248, 0.25);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15), transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(56, 189, 248, 0.1), transparent 40%),
+                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding: 0 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        /* Tech Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 0.825rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent-cyan);
+            box-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        header.hero {
+            text-align: center;
+            padding: 3rem 1rem 5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        header.hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        header.hero p.tagline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Section Styling */
+        section {
+            margin: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 1.5rem;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-blue));
+            border-radius: 2px;
+        }
+
+        /* Cards & Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px var(--accent-glow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            color: var(--text-main);
+        }
+
+        .card h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .card h3 a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .card-subtitle {
+            font-size: 0.875rem;
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .card-list li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .card-list li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        /* App External Button */
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            transition: all 0.2s;
+        }
+
+        .btn-link:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Pillars & Philosophy */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .pillar-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .pillar-card h4 {
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3rem 0 1rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HERO SECTION -->
+        <header class="hero">
+            <div class="badge">
+                <span class="badge-dot"></span> Next-Gen Intelligent Engineering
+            </div>
+            <h1>Feaxr LLC</h1>
+            <p class="tagline">Applied AI for Scientific Computing & Embodied Intelligent Digital Twins</p>
+        </header>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="card" style="background: rgba(15, 23, 42, 0.4);">
+                <h2 style="margin-bottom: 1rem; font-size: 1.5rem;">Pioneering AI in Engineering Analysis</h2>
+                <p><strong>Feaxr LLC</strong> bridges artificial intelligence with scientific computing to understand, simulate, and optimize complex physical systems. Rather than building general-purpose models, we focus on high-impact domains including energy science, additive manufacturing, and real-time physical diagnostic tools.</p>
+            </div>
+        </section>
+
+        <!-- WHAT WE BUILD (PRODUCTS) -->
+        <section id="products">
+            <h2 class="section-title">What We Build</h2>
+            <div class="grid">
+                
+                <!-- DrLiBat -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🔋 DrLiBat</h3>
+                    </div>
+                    <div class="card-subtitle">Scientific Battery Lab</div>
+                    <p>Transforms mobile devices into diagnostic labs. Features a patch-based MLP-Mixer with MoE and linear gated attention for instant battery health, thermal performance, and aging forecasting.</p>
+                    <ul class="card-list">
+                        <li>Privacy-first on-device intelligence</li>
+                        <li>Charging & thermal optimization</li>
+                        <li>Deep degradation profiling</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.echoxy.drlibat" target="_blank" class="btn-link">Google Play ↗</a>
+                </div>
+
+                <!-- Esum -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🤖 Esum</h3>
+                    </div>
+                    <div class="card-subtitle">Private AI SI Assistant</div>
+                    <p>Voice-activated copilot and assistive navigation tool. Built on a 100% private, on-device architecture for multi-step task execution, contextual memory, and screen reading.</p>
+                    <ul class="card-list">
+                        <li>Hybrid Local & Cloud AI engine</li>
+                        <li>Persistent hybrid habit intelligence</li>
+                        <li>Multimodal & voice interaction</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.feaxr.esum" target="_blank" class="btn-link">Google Play ↗</a>
+                </div>
+
+                <!-- AINI -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🔍 AINI</h3>
+                    </div>
+                    <div class="card-subtitle">Artificial Intelligence Nexus Interface</div>
+                    <p>A unified entrance interface for AI interaction. Acts as the core platform foundation for Feaxr's future scientific and engineering software suites.</p>
+                    <ul class="card-list">
+                        <li>Unified multi-model workflow</li>
+                        <li>Optimized local execution</li>
+                        <li>High-efficiency privacy architecture</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.feaxr.aini" target="_blank" class="btn-link">Google Play ↗</a>
+                </div>
+
+                <!-- Privacy Scan -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📷 Privacy Scan</h3>
+                    </div>
+                    <div class="card-subtitle">Camera Detector & Analysis</div>
+                    <p>On-device optical inspection app designed to detect hidden camera lenses and infrared reflections using real-time Computer Vision.</p>
+                    <ul class="card-list">
+                        <li>ML Kit & CameraX integration</li>
+                        <li>Multi-signal confidence scoring</li>
+                        <li>Zero cloud processing or data transfer</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.feaxr.camdetect" target="_blank" class="btn-link">Google Play ↗</a>
+                </div>
+
+                <!-- DrLens -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>👁️ DrLens</h3>
+                    </div>
+                    <div class="card-subtitle">AI Vision Assistant</div>
+                    <p>Visual assistant for real-time optical character recognition, multi-language translation, object scanning, and secure barcode parsing.</p>
+                    <ul class="card-list">
+                        <li>On-device OCR & Instant Translation</li>
+                        <li>Local & Online Object Detection</li>
+                        <li>Privacy-shielded QR parsing</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.feaxr.drlens" target="_blank" class="btn-link">Google Play ↗</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RESEARCH & SCIENTIFIC PROJECTS -->
+        <section id="research">
+            <h2 class="section-title">Scientific Research & Platforms</h2>
+            <div class="grid">
+
+                <!-- OpenBSA -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🔬 OpenBSA</h3>
+                    </div>
+                    <div class="card-subtitle">Open Battery Simulation Agent</div>
+                    <p>Web-based Lithium-ion simulation platform paired with an embedded LLM assistant. Designed for researchers to simulate cell behaviors, configure models, and interpret physical parameters naturally.</p>
+                </div>
+
+                <!-- XR3D -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🖨️ XR3D</h3>
+                    </div>
+                    <div class="card-subtitle">AI Digital Twins for Additive Manufacturing</div>
+                    <p>Research workflow converting smartphone photographs into simulation-ready 3D meshes. Combines AI 3D reconstruction with parallel finite element analysis to compute residual stress and additive manufacturing deformations.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PHILOSOPHY & PRINCIPLES -->
+        <section id="philosophy">
+            <h2 class="section-title">Core Philosophy</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h4>01. Practical</h4>
+                    <p>Every line of code is engineered to solve validated physical and engineering challenges.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4>02. Scientific</h4>
+                    <p>Rooted in rigorous physical principles, numerical accuracy, and validated models.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4>03. Intelligent</h4>
+                    <p>AI designed to elevate and collaborate with human domain expertise, not replace it.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4>04. Efficient</h4>
+                    <p>Privacy-first architectures engineered for local computation and low latency.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER / CONTACT -->
+        <footer>
+            <p><strong>Feaxr LLC</strong></p>
+            <p class="mono" style="font-size: 0.85rem; color: var(--accent-cyan);">feaxr [at] outlook.com</p>
+            <p style="margin-top: 1.5rem; opacity: 0.5; font-size: 0.8rem;">© 2026 Feaxr LLC. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
