@@ -190,14 +190,6 @@
       .visual-top span:last-child {
         color: var(--lime);
       }
-      .mesh {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        object-fit: contain;
-      }
       .visual-label {
         z-index: 1;
         position: absolute;
@@ -255,56 +247,72 @@
         background: #0d151c;
       }
       .project-art {
-        height: 220px;
+        height: 236px;
         position: relative;
         overflow: hidden;
         border-bottom: 1px solid var(--line);
-        background: linear-gradient(135deg, #13292a, #101820);
+        background: #111b24;
+        isolation: isolate;
       }
-      .project-art:before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(#b6eac80c 1px, transparent 1px),
-          linear-gradient(90deg, #b6eac80c 1px, transparent 1px);
-        background-size: 25px 25px;
-      }
-      .battery-shape {
-        position: absolute;
-        inset: 42px 22%;
-        border: 1px solid #89d7ae;
-        transform: skewY(-8deg);
-        box-shadow:
-          12px 12px 0 -1px #1b3430,
-          12px 12px 0 0 #549a7c;
-        background: repeating-linear-gradient(
-          90deg,
-          #90e6a133 0 8%,
-          transparent 8% 11%
-        );
-      }
-      .battery-shape:after {
-        content: "Li+";
-        position: absolute;
-        left: 45%;
-        top: 30%;
-        font: 500 28px var(--mono);
-        color: #b6f1bb;
-      }
-      .mesh-art svg {
-        position: absolute;
-        inset: 0;
+      .project-art img {
+        display: block;
         width: 100%;
         height: 100%;
         object-fit: contain;
-        background: #020a1c;
+      }
+      .project-art--p2d {
+        background: #e8edf0;
+      }
+      .project-art--blade {
+        background: #000;
+      }
+      .project-art::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 64px;
+        pointer-events: none;
+        background: linear-gradient(transparent, rgba(5, 12, 18, .86));
+      }
+      .project-art .project-label {
+        z-index: 1;
+      }
+      .hero-simulation {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 19px;
+        padding: 78px 22px 82px;
+      }
+      .hero-image-frame {
+        width: 100%;
+        padding: 9px;
+        background: #e8eded;
+        border: 1px solid #91aaa4;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, .35);
+      }
+      .hero-image-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .simulation-caption {
+        font: 10px var(--mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: #b6cfc4;
+        text-align: center;
       }
       .project-label {
         position: absolute;
         left: 20px;
         bottom: 16px;
-        color: #9cb1a8;
+        color: #e0ece6;
         font: 10px var(--mono);
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -519,6 +527,16 @@
         .hero-visual {
           height: 300px;
         }
+        .hero-simulation {
+          padding: 60px 14px 62px;
+          gap: 13px;
+        }
+        .hero-image-frame {
+          padding: 5px;
+        }
+        .project-art {
+          height: 205px;
+        }
         .actions {
           gap: 18px;
         }
@@ -562,135 +580,24 @@
         </div>
         <div
           class="hero-visual"
-          aria-label="Conceptual illustration of a finite element mesh on a car body"
+          role="group"
+          aria-label="53S16P battery pack simulation screenshot"
         >
           <div class="visual-top">
             <span>FEAXR / COMPUTATIONAL SYSTEMS</span><span>● RESEARCH</span>
           </div>
-          <svg
-            class="mesh"
-            viewBox="0 0 600 360"
-            role="img"
-            aria-label="Conceptual triangular finite element mesh on a car"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <clipPath id="car-clip">
-                <path
-                  d="M55 230 L67 195 Q82 182 135 174 L205 110 Q224 94 253 92 L365 92 Q395 93 421 112 L481 160 L526 171 Q548 176 557 196 L564 230 L550 244 L526 244 Q522 210 492 210 Q462 210 457 244 L188 244 Q184 210 154 210 Q124 210 119 244 L72 244 Z"
-                />
-              </clipPath>
-              <linearGradient id="car-glow" x2="1" y2="1">
-                <stop stop-color="#193b33" />
-                <stop offset="1" stop-color="#0a151b" />
-              </linearGradient>
-            </defs>
-            <rect width="600" height="360" fill="#09131a" />
-            <path
-              d="M55 230 L67 195 Q82 182 135 174 L205 110 Q224 94 253 92 L365 92 Q395 93 421 112 L481 160 L526 171 Q548 176 557 196 L564 230 L550 244 L526 244 Q522 210 492 210 Q462 210 457 244 L188 244 Q184 210 154 210 Q124 210 119 244 L72 244 Z"
-              fill="url(#car-glow)"
-              stroke="#b7e99a"
-              stroke-width="2"
-            />
-            <g
-              clip-path="url(#car-clip)"
-              stroke="#93d99b"
-              stroke-opacity=".55"
-              stroke-width=".8"
-            >
-              <path d="M35 75 H575" />
-              <path d="M35 91 H575" />
-              <path d="M35 107 H575" />
-              <path d="M35 123 H575" />
-              <path d="M35 139 H575" />
-              <path d="M35 155 H575" />
-              <path d="M35 171 H575" />
-              <path d="M35 187 H575" />
-              <path d="M35 203 H575" />
-              <path d="M35 219 H575" />
-              <path d="M35 235 H575" />
-              <path d="M35 251 H575" />
-              <path d="M35 267 H575" />
-              <path d="M-250 75 L-20 280 M-20 75 L-250 280" />
-              <path d="M-228 75 L2 280 M2 75 L-228 280" />
-              <path d="M-206 75 L24 280 M24 75 L-206 280" />
-              <path d="M-184 75 L46 280 M46 75 L-184 280" />
-              <path d="M-162 75 L68 280 M68 75 L-162 280" />
-              <path d="M-140 75 L90 280 M90 75 L-140 280" />
-              <path d="M-118 75 L112 280 M112 75 L-118 280" />
-              <path d="M-96 75 L134 280 M134 75 L-96 280" />
-              <path d="M-74 75 L156 280 M156 75 L-74 280" />
-              <path d="M-52 75 L178 280 M178 75 L-52 280" />
-              <path d="M-30 75 L200 280 M200 75 L-30 280" />
-              <path d="M-8 75 L222 280 M222 75 L-8 280" />
-              <path d="M14 75 L244 280 M244 75 L14 280" />
-              <path d="M36 75 L266 280 M266 75 L36 280" />
-              <path d="M58 75 L288 280 M288 75 L58 280" />
-              <path d="M80 75 L310 280 M310 75 L80 280" />
-              <path d="M102 75 L332 280 M332 75 L102 280" />
-              <path d="M124 75 L354 280 M354 75 L124 280" />
-              <path d="M146 75 L376 280 M376 75 L146 280" />
-              <path d="M168 75 L398 280 M398 75 L168 280" />
-              <path d="M190 75 L420 280 M420 75 L190 280" />
-              <path d="M212 75 L442 280 M442 75 L212 280" />
-              <path d="M234 75 L464 280 M464 75 L234 280" />
-              <path d="M256 75 L486 280 M486 75 L256 280" />
-              <path d="M278 75 L508 280 M508 75 L278 280" />
-              <path d="M300 75 L530 280 M530 75 L300 280" />
-              <path d="M322 75 L552 280 M552 75 L322 280" />
-              <path d="M344 75 L574 280 M574 75 L344 280" />
-              <path d="M366 75 L596 280 M596 75 L366 280" />
-              <path d="M388 75 L618 280 M618 75 L388 280" />
-              <path d="M410 75 L640 280 M640 75 L410 280" />
-              <path d="M432 75 L662 280 M662 75 L432 280" />
-              <path d="M454 75 L684 280 M684 75 L454 280" />
-              <path d="M476 75 L706 280 M706 75 L476 280" />
-              <path d="M498 75 L728 280 M728 75 L498 280" />
-              <path d="M520 75 L750 280 M750 75 L520 280" />
-              <path d="M542 75 L772 280 M772 75 L542 280" />
-              <path d="M564 75 L794 280 M794 75 L564 280" />
-              <path d="M586 75 L816 280 M816 75 L586 280" />
-              <path d="M608 75 L838 280 M838 75 L608 280" />
-              <path d="M630 75 L860 280 M860 75 L630 280" />
-            </g>
-            <g
-              fill="#0a1920"
-              fill-opacity=".72"
-              stroke="#b7e99a"
-              stroke-width="1.5"
-            >
-              <path
-                d="M154 170 L211 118 Q225 106 250 106 L275 106 L267 169 Z"
+          <div class="hero-simulation">
+            <div class="hero-image-frame">
+              <img
+                src="screenshots/1-53s16p.webp"
+                alt="53S16P battery pack simulation result"
+                width="1000"
+                height="230"
+                fetchpriority="high"
               />
-              <path
-                d="M282 106 L362 106 Q384 106 405 122 L459 166 L277 169 Z"
-              />
-            </g>
-            <g fill="none" stroke="#b7e99a" stroke-width="1.3">
-              <path
-                d="M271 104 L267 238 M413 130 L425 238 M70 196 L134 190 M463 175 L530 183 M205 233 H441 M286 182 H310 M425 182 H446"
-              />
-              <circle cx="154" cy="244" r="31" />
-              <circle cx="154" cy="244" r="20" />
-              <circle cx="492" cy="244" r="31" />
-              <circle cx="492" cy="244" r="20" />
-              <path
-                d="M127 229 L181 259 M127 259 L181 229 M154 213 V275 M123 244 H185 M465 229 L519 259 M465 259 L519 229 M492 213 V275 M461 244 H523"
-              />
-            </g>
-            <path d="M68 289 H548" stroke="#78b98f" stroke-opacity=".25" />
-            <text
-              x="68"
-              y="308"
-              fill="#829b91"
-              font-family="monospace"
-              font-size="9"
-              letter-spacing="2"
-            >
-              ILLUSTRATIVE SURFACE MESH
-            </text>
-          </svg>
-          <div class="visual-label">CONCEPTUAL VISUALIZATION</div>
+            </div>
+            <div class="simulation-caption">53S16P / Simulation result</div>
+          </div>
           <div class="visual-bottom">
             <span>MODEL / PHYSICS / COMPUTE</span><span>01 — 03</span>
           </div>
@@ -714,11 +621,16 @@
         </div>
         <div class="research-grid">
           <article class="research-card">
-            <div class="project-art">
-              <div class="battery-shape"></div>
-              <div class="project-label">
-                Concept illustration / battery systems
-              </div>
+            <div class="project-art project-art--p2d">
+              <img
+                src="screenshots/2-p2d.webp"
+                alt="P2D lithium-ion battery simulation showing anode, separator, cathode and ion transport"
+                width="1000"
+                height="473"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-label">P2D / Battery simulation</div>
             </div>
             <div class="research-body">
               <div class="meta">01 / Battery simulation</div>
@@ -736,120 +648,16 @@
             </div>
           </article>
           <article class="research-card">
-            <div class="project-art mesh-art">
-              <svg
-                viewBox="0 0 600 270"
-                role="img"
-                aria-label="Conceptual finite element heatmap on a turbine blade"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <linearGradient id="blade-heat" x1="0" y1="1" x2=".65" y2="0">
-                    <stop stop-color="#243ed8" />
-                    <stop offset=".25" stop-color="#16a6d2" />
-                    <stop offset=".5" stop-color="#61d183" />
-                    <stop offset=".75" stop-color="#edcc54" />
-                    <stop offset="1" stop-color="#e76b50" />
-                  </linearGradient>
-                  <clipPath id="blade-clip">
-                    <path
-                      d="M226 192 Q255 178 267 145 Q286 91 321 49 Q351 16 413 20 Q375 56 369 107 Q362 162 332 191 Z"
-                    />
-                  </clipPath>
-                </defs>
-                <rect width="600" height="270" fill="#0c1920" />
-                <g stroke="#8cc9b1" stroke-opacity=".08">
-                  <path
-                    d="M0 54 H600 M0 108 H600 M0 162 H600 M0 216 H600 M75 0 V270 M150 0 V270 M225 0 V270 M300 0 V270 M375 0 V270 M450 0 V270 M525 0 V270"
-                  />
-                </g>
-                <path
-                  d="M226 192 Q255 178 267 145 Q286 91 321 49 Q351 16 413 20 Q375 56 369 107 Q362 162 332 191 Z"
-                  fill="url(#blade-heat)"
-                  stroke="#b6dcc0"
-                  stroke-width="1.5"
-                />
-                <g
-                  clip-path="url(#blade-clip)"
-                  stroke="#122d36"
-                  stroke-opacity=".52"
-                  stroke-width=".8"
-                >
-                  <path d="M195 12 H435" />
-                  <path d="M195 25 H435" />
-                  <path d="M195 38 H435" />
-                  <path d="M195 51 H435" />
-                  <path d="M195 64 H435" />
-                  <path d="M195 77 H435" />
-                  <path d="M195 90 H435" />
-                  <path d="M195 103 H435" />
-                  <path d="M195 116 H435" />
-                  <path d="M195 129 H435" />
-                  <path d="M195 142 H435" />
-                  <path d="M195 155 H435" />
-                  <path d="M195 168 H435" />
-                  <path d="M195 181 H435" />
-                  <path d="M195 194 H435" />
-                  <path d="M195 207 H435" />
-                  <path d="M45 10 L225 210 M225 10 L45 210" />
-                  <path d="M63 10 L243 210 M243 10 L63 210" />
-                  <path d="M81 10 L261 210 M261 10 L81 210" />
-                  <path d="M99 10 L279 210 M279 10 L99 210" />
-                  <path d="M117 10 L297 210 M297 10 L117 210" />
-                  <path d="M135 10 L315 210 M315 10 L135 210" />
-                  <path d="M153 10 L333 210 M333 10 L153 210" />
-                  <path d="M171 10 L351 210 M351 10 L171 210" />
-                  <path d="M189 10 L369 210 M369 10 L189 210" />
-                  <path d="M207 10 L387 210 M387 10 L207 210" />
-                  <path d="M225 10 L405 210 M405 10 L225 210" />
-                  <path d="M243 10 L423 210 M423 10 L243 210" />
-                  <path d="M261 10 L441 210 M441 10 L261 210" />
-                  <path d="M279 10 L459 210 M459 10 L279 210" />
-                  <path d="M297 10 L477 210 M477 10 L297 210" />
-                  <path d="M315 10 L495 210 M495 10 L315 210" />
-                  <path d="M333 10 L513 210 M513 10 L333 210" />
-                  <path d="M351 10 L531 210 M531 10 L351 210" />
-                  <path d="M369 10 L549 210 M549 10 L369 210" />
-                  <path d="M387 10 L567 210 M567 10 L387 210" />
-                  <path d="M405 10 L585 210 M585 10 L405 210" />
-                  <path d="M423 10 L603 210 M603 10 L423 210" />
-                  <path d="M441 10 L621 210 M621 10 L441 210" />
-                </g>
-                <path
-                  d="M218 190 L340 190 L357 204 L340 216 L219 216 L204 205 Z"
-                  fill="#244a63"
-                  stroke="#80b8bf"
-                />
-                <path
-                  d="M232 216 H329 L323 233 H238 Z"
-                  fill="#17344d"
-                  stroke="#80b8bf"
-                />
-                <path
-                  d="M332 191 Q350 160 359 109 Q369 54 413 20"
-                  fill="none"
-                  stroke="#f4f2af"
-                  stroke-opacity=".6"
-                />
-                <path
-                  d="M433 73 H498 M433 82 H480"
-                  stroke="#6c958d"
-                  stroke-opacity=".45"
-                />
-                <text
-                  x="435"
-                  y="63"
-                  fill="#8aa59c"
-                  font-family="monospace"
-                  font-size="9"
-                  letter-spacing="1"
-                >
-                  ILLUSTRATIVE
-                </text>
-              </svg>
-              <div class="project-label">
-                Concept illustration / turbine blade heatmap
-              </div>
+            <div class="project-art project-art--blade">
+              <img
+                src="screenshots/3-blade.webp"
+                alt="Turbine blade finite element simulation result with a colored contour field"
+                width="1000"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-label">Turbine blade / Simulation result</div>
             </div>
             <div class="research-body">
               <div class="meta">02 / Additive manufacturing</div>
